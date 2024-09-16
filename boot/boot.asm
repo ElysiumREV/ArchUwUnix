@@ -1,3 +1,9 @@
+.section .multiboot
+    .align 4
+    .long 0x1BADB002  # Magic number
+    .long 0x00        # Flags (sem flags especiais)
+    .long -(0x1BADB002 + 0x00)  # Checksum
+
 section .text
     global _start
 

@@ -1,15 +1,15 @@
-# Compilador e Linkador
-CC = gcc
-LD = ld
-
-# Opções de compilação
-CFLAGS = -m32 -ffreestanding -O2 -Wall -Wextra -fno-pic
-LDFLAGS = -m elf_i386 -Ttext 0x1000 --oformat binary
-
 # Diretórios
 BOOT_DIR = boot
 KERNEL_DIR = kernel
 ISO_DIR = iso
+
+# Compilador
+CC = gcc
+LD = ld
+
+# Opções de compilação
+CFLAGS = -m32 -ffreestanding -fno-pic -O2 -Wall -Wextra
+LDFLAGS =  -m elf_i386 -Ttext 0x1000 --oformat binary -e kernel_main
 
 # Arquivos de saída
 KERNEL_BIN = $(ISO_DIR)/kernel.bin
