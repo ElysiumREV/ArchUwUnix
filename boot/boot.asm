@@ -8,11 +8,22 @@ section .text
     global _start
 
 _start:
-    ; Carrega o kernel
-    mov bx, 0x9000         ; Segmento de memória para carregar o kernel
-    mov dh, 15             ; Número de setores para carregar
-    mov dl, 0x00           ; Drive (0x00 para o disco)
-    int 0x13               ; Chamada de interrupção para carregar
+    cli                     ; Desative interrupções
+    ; Defina o segmento de dados
+    mov ax, 0x7C0          ; Carregue o endereço do setor de boot
+    mov ds, ax             ; Configure DS
+    mov es, ax             ; Configure ES
 
-    ; Salta para o endereço do kernel
-    jmp 0x9000:0x0000      ; Vai para o kernel carregado na memória
+    ; Carregar o kernel
+    mov si, kernel_start   ; Endereço do início do kernel
+    mov bx, 0x1000         ; Endereço onde o kernel será carregado
+    mov cx, kernel_size    ; Tamanho do kernel
+    rep movsb              ; Copie os bytes do kernel para a memória
+
+    ; Inicie o kernel
+    jmp 0x1000             ; Salte para o kernel
+
+section .bss
+kernel_start:
+    resb 0x2000            ; Reservar espaço para o kernel
+kernel_size equ $ - kernel_start
