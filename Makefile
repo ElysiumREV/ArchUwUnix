@@ -11,7 +11,6 @@ LD = ld
 CFLAGS = -m32 -ffreestanding -O2 -fno-pie -Wall -Wextra
 LDFLAGS = -m elf_i386 -T $(KERNEL_DIR)/linker.ld
 
-
 # Arquivos de saída
 KERNEL_BIN = $(ISO_DIR)/kernel.bin
 KERNEL_ELF = $(KERNEL_DIR)/kernel.elf
