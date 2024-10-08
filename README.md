@@ -1,5 +1,5 @@
 # ArchUwUnix
-pt-BR: Sistema Operacional básico feito a partir do trabalho semestral da matéria de Sistemas Operacionais no curso de ciência da computação na Unisagrado.
+pt-BR: Sistema Operacional básico feito a partir do trabalho semestral da matéria de Sistemas Operacionais no curso de ciência da computação na Unisagrado.<br/>
 en-US: A basic Operating System made as part of the semester project for the Operating Systems course in the Computer Science program at Unisagrado.
 
 ## Dependencias
